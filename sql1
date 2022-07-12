@@ -1,0 +1,60 @@
+create table if not exists Employers(
+    Employer_ID Integer Primary Key,
+    Full_Name Text,
+    Joining_Date Text,
+    Curr_Pos Text,
+    Department Text,
+    Client Text
+);
+drop table Services;
+create table if not exists Services(
+    Software_ID Integer Primary Key,
+    Name Text,
+    Category Text,
+    Size Integer,
+    Installments Integer
+);
+drop table Software_Requests;
+create table if not exists Software_Requests(
+    Employer_ID Integer,
+    Software_ID Integer,
+    Request_Start_Date Text,
+    Request_Close_Date Text,   
+    Status Text,
+    FOREIGN KEY(Employer_ID) REFERENCES Employers(Employer_ID),
+    FOREIGN KEY(Software_ID) REFERENCES Services(Software_ID)   
+);
+
+
+drop trigger increment_insert;
+create trigger if not exists increment_insert after insert on Software_Requests 
+begin
+    update Services set Installments=Installments+1 where Services.Software_ID=NEW.Software_ID; 
+end;
+
+create trigger if not exists invalid_request after update on Software_Requests
+when NEW.Status="invalid" and old.Status="valid"
+begin
+    update Services set Installments=Installments-1 where Services.Software_ID=NEW.Software_ID;
+end;
+
+insert into Employers(Full_Name, Joining_Date, Curr_Pos, Department, Client) values ("Josh Price", "2020-09-07", "Data Engineer", "Software and Data", "Morgan Stanley"),
+ ("Anne Hall", "2021-03-04", "Recruiter", "HR", "Vodafone"), ("Lewis Matt", "2022-02-04", "Tour Operator", "Travel", "Vodafone");
+
+select * from employers;
+
+insert into Services(Name, Category, Size, Installments) values ("Business Consultation", "A", 100, 0), ("Automation", "B", 200, 0), ("Graphic Design", "C", 21, 0);
+
+select * from services;
+
+insert into Software_Requests(Employer_ID, Software_ID, Request_Start_Date, Request_Close_Date, Status) values (1, 1, "2021-09-10", "2022-09-08", "valid"), (2, 2, "2022-07-18", "2022-12-23", "valid");
+
+select * from Software_Requests;
+
+insert into Software_Requests(Employer_ID, Software_ID, Request_Start_Date, Request_Close_Date, Status) values (1, 2, "2022-03-23", "2022-09-07", "valid");
+
+update Software_Requests set Status="invalid" where software_id=2;
+
+---------------
+
+
