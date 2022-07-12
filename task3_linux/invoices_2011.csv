@@ -1,0 +1,84 @@
+invoice.invoiceid,customer.firstname,customer.lastname,customer.company,invoice.invoicedate
+167,Richard,Cunningham,,2011-01-02 00:00:00
+168,Patrick,Gray,,2011-01-15 00:00:00
+169,Robert,Brown,,2011-01-15 00:00:00
+170,Martha,Silk,,2011-01-16 00:00:00
+171,Madalena,Sampaio,,2011-01-17 00:00:00
+172,Marc,Dubois,,2011-01-20 00:00:00
+173,Enrique,Mu�oz,,2011-01-25 00:00:00
+174,Franti�ek,Wichterlov�,JetBrains s.r.o.,2011-02-02 00:00:00
+175,Helena,Hol�,,2011-02-15 00:00:00
+176,Daan,Peeters,,2011-02-15 00:00:00
+177,Eduardo,Martins,Woodstock Discos,2011-02-16 00:00:00
+178,Mark,Philips,Telus,2011-02-17 00:00:00
+179,Dan,Miller,,2011-02-20 00:00:00
+180,Robert,Brown,,2011-02-25 00:00:00
+181,Isabelle,Mercier,,2011-03-05 00:00:00
+182,Terhi,H�m�l�inen,,2011-03-18 00:00:00
+183,Hugh,O'Reilly,,2011-03-18 00:00:00
+184,Johannes,Van der Berg,,2011-03-19 00:00:00
+185,Emma,Jones,,2011-03-20 00:00:00
+186,Manoj,Pareek,,2011-03-23 00:00:00
+187,Daan,Peeters,,2011-03-28 00:00:00
+188,Heather,Leacock,,2011-04-05 00:00:00
+189,John,Gordon,,2011-04-18 00:00:00
+190,Victor,Stevens,,2011-04-18 00:00:00
+191,Patrick,Gray,,2011-04-19 00:00:00
+192,Martha,Silk,,2011-04-20 00:00:00
+193,Fynn,Zimmermann,,2011-04-23 00:00:00
+194,Hugh,O'Reilly,,2011-04-28 00:00:00
+195,Lu�s,Gon�alves,Embraer - Empresa Brasileira de Aeron�utica S.A.,2011-05-06 00:00:00
+196,Leonie,K�hler,,2011-05-19 00:00:00
+197,Bj�rn,Hansen,,2011-05-19 00:00:00
+198,Helena,Hol�,,2011-05-20 00:00:00
+199,Eduardo,Martins,Woodstock Discos,2011-05-21 00:00:00
+200,Frank,Harris,Google Inc.,2011-05-24 00:00:00
+201,Victor,Stevens,,2011-05-29 00:00:00
+202,Camille,Bernard,,2011-06-06 00:00:00
+203,Dominique,Lefebvre,,2011-06-19 00:00:00
+204,Wyatt,Girard,,2011-06-19 00:00:00
+205,Terhi,H�m�l�inen,,2011-06-20 00:00:00
+206,Johannes,Van der Berg,,2011-06-21 00:00:00
+207,Steve,Murray,,2011-06-24 00:00:00
+208,Bj�rn,Hansen,,2011-06-29 00:00:00
+209,Michelle,Brooks,,2011-07-07 00:00:00
+210,Tim,Goyer,Apple Inc.,2011-07-20 00:00:00
+211,Kathy,Chase,,2011-07-20 00:00:00
+212,John,Gordon,,2011-07-21 00:00:00
+213,Patrick,Gray,,2011-07-22 00:00:00
+214,Ellie,Sullivan,,2011-07-25 00:00:00
+215,Wyatt,Girard,,2011-07-30 00:00:00
+216,Diego,Guti�rrez,,2011-08-07 00:00:00
+217,Luis,Rojas,,2011-08-20 00:00:00
+218,Puja,Srivastava,,2011-08-20 00:00:00
+219,Leonie,K�hler,,2011-08-21 00:00:00
+220,Helena,Hol�,,2011-08-22 00:00:00
+221,Roberto,Almeida,Riotur,2011-08-25 00:00:00
+222,Kathy,Chase,,2011-08-30 00:00:00
+223,Madalena,Sampaio,,2011-09-07 00:00:00
+224,Hannah,Schneider,,2011-09-20 00:00:00
+225,Niklas,Schr�der,,2011-09-20 00:00:00
+226,Dominique,Lefebvre,,2011-09-21 00:00:00
+227,Terhi,H�m�l�inen,,2011-09-22 00:00:00
+228,Enrique,Mu�oz,,2011-09-25 00:00:00
+229,Puja,Srivastava,,2011-09-30 00:00:00
+230,Mark,Philips,Telus,2011-10-08 00:00:00
+231,Jennifer,Peterson,Rogers Canada,2011-10-21 00:00:00
+232,Jack,Smith,Microsoft Corporation,2011-10-21 00:00:00
+233,Tim,Goyer,Apple Inc.,2011-10-22 00:00:00
+234,John,Gordon,,2011-10-23 00:00:00
+235,Robert,Brown,,2011-10-26 00:00:00
+236,Niklas,Schr�der,,2011-10-31 00:00:00
+237,Emma,Jones,,2011-11-08 00:00:00
+238,Phil,Hughes,,2011-11-21 00:00:00
+239,Mark,Taylor,,2011-11-21 00:00:00
+240,Luis,Rojas,,2011-11-22 00:00:00
+241,Leonie,K�hler,,2011-11-23 00:00:00
+242,Daan,Peeters,,2011-11-26 00:00:00
+243,Jack,Smith,Microsoft Corporation,2011-12-01 00:00:00
+244,Martha,Silk,,2011-12-09 00:00:00
+245,Aaron,Mitchell,,2011-12-22 00:00:00
+246,Jo�o,Fernandes,,2011-12-22 00:00:00
+247,Hannah,Schneider,,2011-12-23 00:00:00
+248,Dominique,Lefebvre,,2011-12-24 00:00:00
+249,Hugh,O'Reilly,,2011-12-27 00:00:00
