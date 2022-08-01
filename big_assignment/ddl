@@ -1,0 +1,179 @@
+drop table Ongoing_Training cascade;
+create table if not exists User_Employers(
+	userID serial primary key,
+	employer_number integer unique,
+	creation_date date,
+	username varchar(100) not null unique,
+	pwd varchar(100),
+	lvl varchar(100),
+	active char(1)  not null default 'y',
+	recBeginDate date not null,
+	recEndDate date not null default TO_DATE('31/12/9999', 'DD/MM/YYYY')
+);
+
+create table if not exists Platform(
+	platformID serial primary key,
+	platform_name varchar(100),
+	hyperlink_path text,
+	active char(1) not null default 'y',
+	recBeginDate date not null,
+	recEndDate date not null default TO_DATE('31/12/9999', 'DD/MM/YYYY')
+);
+
+create table if not exists Course(
+	courseID serial primary key,
+	course_name varchar(100),
+	platformID integer not null,
+	duration integer,
+	creation_date timestamp,
+	tags text,
+	photo JSONB,
+	active char(1) not null default 'y',
+	recBeginDate date not null,
+	recEndDate date not null default TO_DATE('31/12/9999', 'DD/MM/YYYY'),
+	foreign key (platformID) references Platform (platformID)
+);
+
+
+create table if not exists Review(
+	reviewID serial primary key,
+	userID integer not null,
+	courseID integer not null,
+	feedback text,
+	like_dislike boolean,
+	ranking_score integer,
+	active char(1) not null default 'y',
+	recBeginDate date not null,
+	recEndDate date not null default TO_DATE('31/12/9999', 'DD/MM/YYYY'),
+	foreign key (userID) references User_Employers (userID),
+	foreign key (courseID) references Course (courseID)
+);
+
+/*create table if not exists Pictures(
+	courseID integer not null,
+	platformID integer not null,
+	image_object JSONB,
+	primary key (courseID, platformID),
+	foreign key (courseID) references Course (courseID),
+	foreign key (platformID) references Platform (platformID)
+);
+*/
+create table if not exists Certification(
+	certificationID serial primary key,
+	userID integer not null,
+	courseID integer not null,
+	completion_duration integer default 0,
+	completion_date date default null,
+	active char(1) not null default 'y',
+	recBeginDate date not null,
+	recEndDate date not null default TO_DATE('31/12/9999', 'DD/MM/YYYY'),
+	foreign key (userID) references User_Employers (userID),
+	foreign key (courseID) references Course (courseID)
+);
+
+create table if not exists Ongoing_Training(
+	trainingID serial primary key,
+	userID integer not null,
+	courseID integer not null,
+	status text,
+	completion_percentage integer,
+	start_date date,
+	finish_date date,
+	last_updated date,
+	active char(1) not null default 'y',
+	recBeginDate date not null,
+	recEndDate date not null default TO_DATE('31/12/9999', 'DD/MM/YYYY'),
+	foreign key (userID) references User_Employers (userID),
+	foreign key (courseID) references Course (courseID)
+);
+
+create or replace rule "history" as on delete to certification
+do instead
+update certification set active='n' and recBeginDate=now() and recEndDate=now(); 
+
+create or replace rule "history_u" as on delete to user_employers
+do instead
+update user_employers set active='n' and recBeginDate=now() and recEndDate=now();
+
+create or replace rule "history_p" as on delete to platform
+do instead
+update platform set active='n' and recBeginDate=now() and recEndDate=now();
+
+create or replace rule "history_c" as on delete to course
+do instead
+update course set active='n' and recBeginDate=now() and recEndDate=now();
+
+create or replace rule "history_r" as on delete to review
+do instead
+update review set active='n' and recBeginDate=now() and recEndDate=now();
+
+create or replace rule "history_r" as on delete to ongoing_training
+do instead
+update ongoing_training set active='n' and recBeginDate=now() and recEndDate=now();
+
+/*
+ALTER TABLE user_employers ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE Platform ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE Course ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE Review ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE Certification ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE Ongoing_Training ADD COLUMN active boolean NOT NULL DEFAULT true;
+
+CREATE RULE "soft_deletion" AS ON DELETE TO User_Employers DO INSTEAD (
+  UPDATE User_Employers SET active = false WHERE userID = old.userID AND NOT active
+);
+
+CREATE RULE "soft_deletion" AS ON DELETE TO Platform DO INSTEAD (
+  UPDATE Platform SET active = false WHERE platformID = old.platformID AND NOT active
+);
+
+CREATE RULE "soft_deletion" AS ON DELETE TO Course DO INSTEAD (
+  UPDATE Course SET active = false WHERE courseID = old.courseID AND NOT active
+);
+
+CREATE RULE "soft_deletion" AS ON DELETE TO Review DO INSTEAD (
+  UPDATE Review SET active = false WHERE userID = old.userID AND courseID = old.courseID AND NOT active
+);
+
+CREATE RULE "soft_deletion" AS ON DELETE TO Certification DO INSTEAD (
+  UPDATE Certification SET active = false WHERE certificationID = old.certificationID AND NOT active
+);
+
+CREATE RULE "soft_deletion" AS ON DELETE TO Ongoing_Training DO INSTEAD (
+  UPDATE Ongoing_Training SET active = false WHERE trainingID = old.trainingID AND NOT active
+);
+
+CREATE RULE "delete_review_u" AS ON UPDATE TO User_Employers
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE review SET active = false WHERE userID = old.userID;
+ 
+CREATE RULE "delete_certification_u" AS ON UPDATE TO User_Employers
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE certification SET active = false WHERE userID = old.userID;
+  
+CREATE RULE "delete_ongoing_training_u" AS ON UPDATE TO User_Employers
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE ongoing_training SET active = false WHERE userID = old.userID;
+ 
+ 
+ CREATE RULE "delete_course_p" AS ON UPDATE TO Platform
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE course SET active = false WHERE platformID = old.platformID;
+  
+  
+ CREATE RULE "delete_review_c" AS ON UPDATE TO Course
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE Review SET active = false WHERE courseID = old.courseID;
+ 
+ CREATE RULE "delete_certification_c" AS ON UPDATE TO Course
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE Certification SET active = false WHERE courseID = old.courseID;
+  
+ CREATE RULE "delete_ongoing_training_c" AS ON UPDATE TO Course
+  WHERE NOT old.active AND new.active
+  DO ALSO UPDATE Ongoing_Training SET active = false WHERE courseID = old.courseID;
+  
+ */
+ 
+ select * from platform;
+ 
