@@ -1,4 +1,5 @@
 import random
+from numpy import NaN
 import psycopg2
 import pandas as pd
 from faker import Faker
@@ -57,6 +58,10 @@ def review():
     df_cols_tuple = csvDatas('review.csv')
 
     for i, row in df_cols_tuple[0].iterrows():
+        if row['feedback'] == "'":
+            row["feedback"]= None
+        if row['ranking_score'] == 0:
+            row["ranking_score"] = None
         sql = "INSERT INTO Review (" + df_cols_tuple[1] + ") VALUES (" + "%s,"*(len(row)-1) + "%s)"
         cursor.execute(sql, tuple(row))
         connection.commit()
@@ -97,7 +102,7 @@ def generate():
     #course() 
     #review() 
     #training() 
-    #certification()
+    certification()
     print("all generated")
 
 
@@ -335,7 +340,7 @@ def update(table_name, columns_with_values, where):
     print(cursor.rowcount, "record(s) affected")
 
 ################## function calls
-#generate()
+generate()
 #select("User_Employers", "userID, username", "active='y'")
 #deactivate("ongoing_training", "userID=5")
 #update("ongoing_training", "userid=5", "courseid=403")

@@ -1,0 +1,1 @@
+between(completion_date, toDate($dates+'-01-01'), toDate($dates+'-12-31')) && $dates==toString(year(completion_date))

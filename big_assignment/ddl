@@ -1,4 +1,3 @@
-drop table Ongoing_Training cascade;
 create table if not exists User_Employers(
 	userID serial primary key,
 	employer_number integer unique,
@@ -25,7 +24,7 @@ create table if not exists Course(
 	course_name varchar(100),
 	platformID integer not null,
 	duration integer,
-	creation_date timestamp,
+	creation_date date,
 	tags text,
 	photo JSONB,
 	active char(1) not null default 'y',
