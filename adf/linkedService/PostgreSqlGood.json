@@ -1,0 +1,16 @@
+{
+	"name": "PostgreSqlGood",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "PostgreSql",
+		"typeProperties": {
+			"connectionString": "host=localhost;port=5432;database=Assignment;uid=postgres;encryptionmethod=0",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkMjNlYzgyZS0wYjNlLTQ2YzItOThjNy03YmQ1OTBlOWVkMDgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selhostedIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

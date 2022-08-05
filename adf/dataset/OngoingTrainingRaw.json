@@ -1,0 +1,70 @@
+{
+	"name": "OngoingTrainingRaw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dbo.Ongoing_Training.csv",
+				"folderPath": "Raw Zone",
+				"fileSystem": "datatrans"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "trainingid",
+				"type": "String"
+			},
+			{
+				"name": "userid",
+				"type": "String"
+			},
+			{
+				"name": "courseid",
+				"type": "String"
+			},
+			{
+				"name": "status",
+				"type": "String"
+			},
+			{
+				"name": "completion_percentage",
+				"type": "String"
+			},
+			{
+				"name": "start_date",
+				"type": "String"
+			},
+			{
+				"name": "finish_date",
+				"type": "String"
+			},
+			{
+				"name": "last_updated",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			},
+			{
+				"name": "recbegindate",
+				"type": "String"
+			},
+			{
+				"name": "recenddate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

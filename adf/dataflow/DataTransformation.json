@@ -1,0 +1,301 @@
+{
+	"name": "DataTransformation",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "CertificationRaw",
+						"type": "DatasetReference"
+					},
+					"name": "CertificationCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "PlatformRaw",
+						"type": "DatasetReference"
+					},
+					"name": "PlatformCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "UserEmployersRaw",
+						"type": "DatasetReference"
+					},
+					"name": "UserEmployerCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "OngoingTrainingRaw",
+						"type": "DatasetReference"
+					},
+					"name": "OngoingTraningsCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "ReviewRaw",
+						"type": "DatasetReference"
+					},
+					"name": "ReviewCSV"
+				},
+				{
+					"dataset": {
+						"referenceName": "CourseRaw",
+						"type": "DatasetReference"
+					},
+					"name": "CourseCSV"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CSVTransformationZone",
+						"type": "DatasetReference"
+					},
+					"name": "StoreTransformedCertification"
+				},
+				{
+					"dataset": {
+						"referenceName": "CSVTransformationZone",
+						"type": "DatasetReference"
+					},
+					"name": "StoreTransformedPlatform"
+				},
+				{
+					"dataset": {
+						"referenceName": "CSVTransformationZone",
+						"type": "DatasetReference"
+					},
+					"name": "StoreTransfromedU"
+				},
+				{
+					"dataset": {
+						"referenceName": "CSVTransformationZone",
+						"type": "DatasetReference"
+					},
+					"name": "StoreTransformedO"
+				},
+				{
+					"dataset": {
+						"referenceName": "CSVTransformationZone",
+						"type": "DatasetReference"
+					},
+					"name": "StoreTransformedR"
+				},
+				{
+					"dataset": {
+						"referenceName": "CSVTransformationZone",
+						"type": "DatasetReference"
+					},
+					"name": "StoreTransformedCourse"
+				}
+			],
+			"transformations": [
+				{
+					"name": "transformDate"
+				},
+				{
+					"name": "transformNullValues"
+				},
+				{
+					"name": "transformDateP"
+				},
+				{
+					"name": "transFormNullValuesP"
+				},
+				{
+					"name": "transformDateU"
+				},
+				{
+					"name": "transformNullValuesU"
+				},
+				{
+					"name": "transformDateO"
+				},
+				{
+					"name": "transformNullValuesO"
+				},
+				{
+					"name": "transformDateR"
+				},
+				{
+					"name": "transformNullValuesR"
+				},
+				{
+					"name": "transformDateC"
+				},
+				{
+					"name": "transformNullValuesCourse"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          certificationid as string,",
+				"          userid as string,",
+				"          courseid as string,",
+				"          completion_duration as string,",
+				"          completion_date as string,",
+				"          active as string,",
+				"          recbegindate as string,",
+				"          recenddate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CertificationCSV",
+				"source(output(",
+				"          platformid as string,",
+				"          platform_name as string,",
+				"          hyperlink_path as string,",
+				"          active as string,",
+				"          recbegindate as string,",
+				"          recenddate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> PlatformCSV",
+				"source(output(",
+				"          userid as string,",
+				"          employer_number as string,",
+				"          creation_date as string,",
+				"          username as string,",
+				"          pwd as string,",
+				"          lvl as string,",
+				"          active as string,",
+				"          recbegindate as string,",
+				"          recenddate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> UserEmployerCSV",
+				"source(output(",
+				"          trainingid as string,",
+				"          userid as string,",
+				"          courseid as string,",
+				"          status as string,",
+				"          completion_percentage as string,",
+				"          start_date as string,",
+				"          finish_date as string,",
+				"          last_updated as string,",
+				"          active as string,",
+				"          recbegindate as string,",
+				"          recenddate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> OngoingTraningsCSV",
+				"source(output(",
+				"          reviewid as string,",
+				"          userid as string,",
+				"          courseid as string,",
+				"          feedback as string,",
+				"          like_dislike as string,",
+				"          ranking_score as string,",
+				"          active as string,",
+				"          recbegindate as string,",
+				"          recenddate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ReviewCSV",
+				"source(output(",
+				"          courseid as string,",
+				"          course_name as string,",
+				"          platformid as string,",
+				"          duration as string,",
+				"          creation_date as string,",
+				"          tags as string,",
+				"          photo as string,",
+				"          active as string,",
+				"          recbegindate as string,",
+				"          recenddate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CourseCSV",
+				"CertificationCSV derive(completion_date = toDate(completion_date),",
+				"          recbegindate = toDate(recbegindate),",
+				"          recenddate = toDate(recenddate)) ~> transformDate",
+				"transformDate derive(completion_date = iifNull('9999-12-31', 'Null')) ~> transformNullValues",
+				"PlatformCSV derive(recbegindate = toDate(recbegindate),",
+				"          recenddate = toDate(recenddate)) ~> transformDateP",
+				"transformDateP derive(platform_name = iif(platform_name=='NaN', replace('No Platform','Nan'), platform_name),",
+				"          hyperlink_path = iif(hyperlink_path=='NaN', replace('No Link','Nan'), hyperlink_path)) ~> transFormNullValuesP",
+				"UserEmployerCSV derive(creation_date = toDate(creation_date),",
+				"          recbegindate = toDate(recbegindate),",
+				"          recenddate = toDate(recenddate)) ~> transformDateU",
+				"transformDateU derive(pwd = iif(pwd=='NaN', replace('No Password','Nan'), pwd)) ~> transformNullValuesU",
+				"OngoingTraningsCSV derive(start_date = toDate(start_date),",
+				"          finish_date = toDate(finish_date),",
+				"          last_updated = toDate(last_updated),",
+				"          recbegindate = toDate(recbegindate),",
+				"          recenddate = toDate(recenddate)) ~> transformDateO",
+				"transformDateO derive(finish_date = iifNull('Not Finished', 'Null')) ~> transformNullValuesO",
+				"ReviewCSV derive(recbegindate = toDate(recbegindate),",
+				"          recenddate = toDate(recenddate)) ~> transformDateR",
+				"transformDateR derive(feedback = iifNull('No Feedback', 'Null'),",
+				"          ranking_score = iifNull('No Ranking', 'Null')) ~> transformNullValuesR",
+				"CourseCSV derive(creation_date = toDate(creation_date),",
+				"          recbegindate = toDate(recbegindate),",
+				"          recenddate = toDate(recenddate)) ~> transformDateC",
+				"transformDateC derive(tags = iif(tags=='NaN', replace('No Tags','Nan'), tags),",
+				"          photo = iif(photo=='[]', replace('No Photo','Nan'), photo)) ~> transformNullValuesCourse",
+				"transformNullValues sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['certificationTransformed'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     partitionBy('hash', 1)) ~> StoreTransformedCertification",
+				"transFormNullValuesP sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['platformTransformed'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StoreTransformedPlatform",
+				"transformNullValuesU sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['userEmployersTransformed'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StoreTransfromedU",
+				"transformNullValuesO sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['TrainingTransformed'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StoreTransformedO",
+				"transformNullValuesR sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['reviewTransformed'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StoreTransformedR",
+				"transformNullValuesCourse sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['courseTransformed'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StoreTransformedCourse"
+			]
+		}
+	}
+}

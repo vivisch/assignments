@@ -1,0 +1,9 @@
+{
+	"name": "exerciseforadf",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0c1e3892-d160-4262-b2e3-bf9cf1c0fb8d",
+		"tenantId": "0133bb48-f790-4560-a64d-ac46a472fbbc"
+	}
+}

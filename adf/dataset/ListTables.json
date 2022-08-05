@@ -1,0 +1,13 @@
+{
+	"name": "ListTables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PostgreSqlGood",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

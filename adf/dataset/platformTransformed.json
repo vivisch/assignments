@@ -1,0 +1,50 @@
+{
+	"name": "platformTransformed",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "platformTransformed",
+				"folderPath": "Transformation Zone",
+				"fileSystem": "datatrans"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "platformid",
+				"type": "String"
+			},
+			{
+				"name": "platform_name",
+				"type": "String"
+			},
+			{
+				"name": "hyperlink_path",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			},
+			{
+				"name": "recbegindate",
+				"type": "String"
+			},
+			{
+				"name": "recenddate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

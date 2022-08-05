@@ -1,0 +1,62 @@
+{
+	"name": "reviewTransformed",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "reviewTransformed",
+				"folderPath": "Transformation Zone",
+				"fileSystem": "datatrans"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "reviewid",
+				"type": "String"
+			},
+			{
+				"name": "userid",
+				"type": "String"
+			},
+			{
+				"name": "courseid",
+				"type": "String"
+			},
+			{
+				"name": "feedback",
+				"type": "String"
+			},
+			{
+				"name": "like_dislike",
+				"type": "String"
+			},
+			{
+				"name": "ranking_score",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			},
+			{
+				"name": "recbegindate",
+				"type": "String"
+			},
+			{
+				"name": "recenddate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

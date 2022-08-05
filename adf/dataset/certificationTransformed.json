@@ -1,0 +1,58 @@
+{
+	"name": "certificationTransformed",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "certificationTransformed",
+				"folderPath": "Transformation Zone",
+				"fileSystem": "datatrans"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "certificationid",
+				"type": "String"
+			},
+			{
+				"name": "userid",
+				"type": "String"
+			},
+			{
+				"name": "courseid",
+				"type": "String"
+			},
+			{
+				"name": "completion_duration",
+				"type": "String"
+			},
+			{
+				"name": "completion_date",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			},
+			{
+				"name": "recbegindate",
+				"type": "String"
+			},
+			{
+				"name": "recenddate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,66 @@
+{
+	"name": "CourseRaw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dbo.Course.csv",
+				"folderPath": "Raw Zone",
+				"fileSystem": "datatrans"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "courseid",
+				"type": "String"
+			},
+			{
+				"name": "course_name",
+				"type": "String"
+			},
+			{
+				"name": "platformid",
+				"type": "String"
+			},
+			{
+				"name": "duration",
+				"type": "String"
+			},
+			{
+				"name": "creation_date",
+				"type": "String"
+			},
+			{
+				"name": "tags",
+				"type": "String"
+			},
+			{
+				"name": "photo",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			},
+			{
+				"name": "recbegindate",
+				"type": "String"
+			},
+			{
+				"name": "recenddate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
